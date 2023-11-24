@@ -1,0 +1,100 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    style
+      include ./order-style.css
+  body
+    section
+      div.container
+        div.container--title
+          h1 納品書
+        div.container--date
+          table.table
+            tbody.table-body
+              tr.table-row
+                td.label 納品番号
+                td.value
+              tr.table-row
+                td.space-column
+                td.space-column
+              tr.table-row
+                td.label 発行日
+                td.value
+              tr.table-row
+                td.space-column
+                td.space-column
+              tr.table-row
+                td.label 注文日
+                td.value 2022/07/07
+        div.container--customer
+          if (customer)
+            div.name #{customer.name}
+            div.postal-code #{customer.postalCode}
+            div.address #{customer.address}
+            div.country #{customer.country}
+            div.tel #{customer.phone}
+            div.email #{customer.email}
+        div.container--seller
+          if (seller)
+            div.name #{seller.name}
+            div.postal-code #{seller.postalCode}
+            div.address #{seller.address}
+            div.country #{seller.country}
+            div.tel #{seller.phone}
+            div.email #{seller.email}
+        div.container--description
+          p 下記の通り納品いたします。
+        div.container--price
+          div.label 合計金額
+          div.value
+            span.amount
+              | #{totalAmountWithTax}
+              span.tax-included (税込)
+        div.container--order
+          table.table
+            thead.table-header
+              tr.table-row
+                th.table-column1 注文ID
+                th.table-column2 商品名/品目
+                th.table-column3 数量
+                th.table-column4 単価
+                th.table-column5 送料
+                th.table-column6 金額(税込)
+            tbody.table-body
+              each product, index in orderProducts
+                tr.table-row
+                  td.table-column1 #{product.code}
+                  td.table-column2 #{product.title}
+                  td.table-column3 #{product.quantity}
+                  td.table-column4 #{product.priceWithTax}
+                  td.table-column5 #{product.shippingFeeWithTax}
+                  td.table-column6 #{product.totalPriceWithTax}
+              if (orderProducts.length < 6)
+                - for (var x = 0; x < (6 - orderProducts.length); x++)
+                  tr.table-row
+                    td.table-column1
+                    td.table-column2
+                    td.table-column3
+                    td.table-column4
+                    td.table-column5
+                    td.table-column6
+              tr.table-row
+                td.space-column
+                td.space-column
+                td.space-column
+                td.space-column
+                td.total-label 合計
+                td.table-column6 #{totalAmountWithTax}
+        div.container--remarks
+          table.table
+            thead.table-header
+              tr.table-row
+                th.table-column 備考
+            tbody.table-body
+              tr.table-row
+                td.table-column
+        div.container--footer

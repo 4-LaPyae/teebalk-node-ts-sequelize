@@ -1,0 +1,5 @@
+export enum ItemTypeEnum {
+  PRODUCT = 'PRODUCT',
+  EXPERIENCE = 'EXPERIENCE',
+  INSTORE_PRODUCT = 'INSTORE_PRODUCT'
+}

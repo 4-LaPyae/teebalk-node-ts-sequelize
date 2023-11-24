@@ -1,0 +1,35 @@
+html
+  head(lang='ja-JP')
+    meta(charset='utf-8')
+    meta(http-equiv='content-language' content='ja')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title=title
+    meta(name='description' content=metaTagDescription)
+    meta(name='keywords' content=metaTagKeywords)
+    meta(property='og:url' content=url)
+    meta(property='og:type' content='website')
+    meta(property='og:locale' content='ja_JP')
+    meta(property='og:locale:alternate' content='en_US')
+    meta(property='og:title' content=title)
+    meta(property='twitter:title' content=title)
+    meta(property='og:description' content=metaTagDescription)
+    meta(property='twitter:description' content=metaTagDescription)
+    meta(property='og:image' content=image)
+    meta(property='twitter:image' content=image)
+    meta(property='og:image:secure_url' content=image)
+    meta(property='twitter:card' content='summary')
+    meta(property='og:image:height' content=imageHeight)
+    meta(property='og:image:width' content=imageWidth)
+    link(rel='icon' type='image/png' href=faviconUrl)
+    style
+      include ./seo-style.css
+  body
+    header
+      div
+        img(src=image alt=title)
+    main
+      header
+        h1=title
+      section
+        h2=subtitle
+        div!=description
